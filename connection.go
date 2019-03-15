@@ -144,14 +144,14 @@ func (c *mysqlConn) getSchemaMap() (map[string]*driver.Schema, error) {
 			}
 			schema.PrimaryKey.ColumnNames = append(schema.PrimaryKey.ColumnNames, columnName)
 		}
-		valueType, err := mysqlColumnTypeToValueType(columnType)
+		ct, err := columnTypeFromMySQLToGeneric(columnType)
 		if err != nil {
 			return nil, err
 		}
 		column := &driver.Column{
 			Name:            columnName,
 			OrdinalPosition: ordinalPosition - 1,
-			Type:            valueType,
+			Type:            ct,
 			NotNull:         isNullable != "YES",
 			AutoIncrement:   strings.Contains(extra, "auto_increment"),
 		}
@@ -160,72 +160,4 @@ func (c *mysqlConn) getSchemaMap() (map[string]*driver.Schema, error) {
 	}
 
 	return schemaMap, nil
-}
-
-func mysqlColumnTypeToValueType(ct string) (driver.ColumnType, error) {
-	ct = strings.ToLower(ct)
-	if strings.HasPrefix(ct, "int") ||
-		strings.HasPrefix(ct, "smallint") ||
-		strings.HasPrefix(ct, "mediumint") ||
-		strings.HasPrefix(ct, "bigint") {
-		return driver.ColumnTypeInt, nil
-	}
-	if strings.HasPrefix(ct, "float") ||
-		strings.HasPrefix(ct, "double") ||
-		strings.HasPrefix(ct, "decimal") {
-		return driver.ColumnTypeFloat, nil
-	}
-	if strings.HasPrefix(ct, "char") ||
-		strings.HasPrefix(ct, "varchar") ||
-		strings.HasPrefix(ct, "text") ||
-		strings.HasPrefix(ct, "mediumtext") ||
-		strings.HasPrefix(ct, "longtext") ||
-		strings.HasPrefix(ct, "json") {
-		return driver.ColumnTypeString, nil
-	}
-	if strings.HasPrefix(ct, "datetime") ||
-		strings.HasPrefix(ct, "timestamp") {
-		return driver.ColumnTypeDatetime, nil
-	}
-	if strings.HasPrefix(ct, "date") {
-		return driver.ColumnTypeDate, nil
-	}
-	if strings.HasPrefix(ct, "blob") {
-		return driver.ColumnTypeBytes, nil
-	}
-	return driver.ColumnTypeNull, fmt.Errorf("conversion not found for MySQL type: %s", ct)
-}
-
-func colToMySQLType(c *driver.Column) reflect.Type {
-	switch c.Type {
-	case driver.ColumnTypeInt:
-		if c.NotNull {
-			return reflect.TypeOf(int64(0))
-		}
-		return reflect.TypeOf(sql.NullInt64{})
-
-	case driver.ColumnTypeFloat:
-		if c.NotNull {
-			return reflect.TypeOf(float64(0))
-		}
-		return reflect.TypeOf(sql.NullFloat64{})
-	case driver.ColumnTypeBool:
-		if c.NotNull {
-			return reflect.TypeOf(false)
-		}
-		return reflect.TypeOf(sql.NullBool{})
-	case driver.ColumnTypeDatetime, driver.ColumnTypeDate:
-		if c.NotNull {
-			return reflect.TypeOf(time.Time{})
-		}
-		return reflect.TypeOf(nil)
-	case driver.ColumnTypeString:
-		if c.NotNull {
-			return reflect.TypeOf("")
-		}
-		return reflect.TypeOf(sql.NullString{})
-	case driver.ColumnTypeBytes:
-		return reflect.TypeOf([]byte{})
-	}
-	return reflect.TypeOf(nil)
 }
