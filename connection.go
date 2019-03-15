@@ -10,7 +10,6 @@ import (
 	"time"
 
 	"github.com/Mitu217/tamate/driver"
-	"github.com/go-sql-driver/mysql"
 )
 
 type mysqlConn struct {
@@ -19,21 +18,36 @@ type mysqlConn struct {
 }
 
 func newMySQLConn(dsn string) (*mysqlConn, error) {
-	db, err := sql.Open("mysql", dsn)
-	if err != nil {
+	mc := &mysqlConn{
+		DSN: dsn,
+	}
+	if err := mc.Open(); err != nil {
 		return nil, err
+	}
+	return mc, nil
+}
+
+func (c *mysqlConn) Open() error {
+	db, err := sql.Open("mysql", c.DSN)
+	if err != nil {
+		return err
 	}
 	if err := db.Ping(); err != nil {
-		return nil, err
+		return err
 	}
-	return &mysqlConn{
-		DSN: dsn,
-		db:  db,
-	}, nil
+	c.db = db
+	return nil
 }
 
 func (c *mysqlConn) Close() error {
-	return c.db.Close()
+	if c.db == nil {
+		return errors.New("datastore is not opened")
+	}
+	if err := c.db.Close(); err != nil {
+		return err
+	}
+	c.db = nil
+	return nil
 }
 
 func (c *mysqlConn) GetSchema(ctx context.Context, name string) (*driver.Schema, error) {
@@ -204,7 +218,7 @@ func colToMySQLType(c *driver.Column) reflect.Type {
 		if c.NotNull {
 			return reflect.TypeOf(time.Time{})
 		}
-		return reflect.TypeOf(mysql.NullTime{})
+		return reflect.TypeOf(nil)
 	case driver.ColumnTypeString:
 		if c.NotNull {
 			return reflect.TypeOf("")
