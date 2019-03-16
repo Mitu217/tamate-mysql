@@ -7,7 +7,7 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/Mitu217/tamate/driver"
+	"github.com/go-tamate/tamate/driver"
 )
 
 type mysqlConn struct {

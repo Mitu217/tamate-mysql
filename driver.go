@@ -3,8 +3,8 @@ package mysql
 import (
 	"context"
 
-	"github.com/Mitu217/tamate"
-	"github.com/Mitu217/tamate/driver"
+	"github.com/go-tamate/tamate"
+	"github.com/go-tamate/tamate/driver"
 )
 
 const driverName = "mysql"

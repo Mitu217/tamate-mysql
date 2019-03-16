@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/Mitu217/tamate"
+	"github.com/go-tamate/tamate"
 	"github.com/stretchr/testify/assert"
 
 	_ "github.com/go-sql-driver/mysql"

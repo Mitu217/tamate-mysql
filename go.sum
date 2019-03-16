@@ -1,5 +1,5 @@
-github.com/Mitu217/tamate v0.2.1 h1:s519F2aaHWoNL8k4GnQn/rV6g3b5PV5DvzvhzchynqA=
-github.com/Mitu217/tamate v0.2.1/go.mod h1:TqjHfznaVQUi7FgFM69THBFNQo8W2B9xJL0Bk7hfZU0=
+github.com/go-tamate/tamate v0.2.1 h1:s519F2aaHWoNL8k4GnQn/rV6g3b5PV5DvzvhzchynqA=
+github.com/go-tamate/tamate v0.2.1/go.mod h1:TqjHfznaVQUi7FgFM69THBFNQo8W2B9xJL0Bk7hfZU0=
 github.com/araddon/dateparse v0.0.0-20190223010137-262228af701e h1:OnnRK2k3we438w+EZ8uDq+lIkjJ7QuPOnkNlyYkiBnU=
 github.com/araddon/dateparse v0.0.0-20190223010137-262228af701e/go.mod h1:SLqhdZcd+dF3TEVL2RMoob5bBP5R1P1qkox+HtCBgGI=
 github.com/davecgh/go-spew v1.1.0 h1:ZDRjVQ15GmhC3fiQ8ni8+OwkZQO4DARzQgrnXU1Liz8=

@@ -7,7 +7,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/Mitu217/tamate/driver"
+	"github.com/go-tamate/tamate/driver"
 )
 
 //--------------------

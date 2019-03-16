@@ -3,11 +3,11 @@ package main
 import (
 	"fmt"
 
-	"github.com/Mitu217/tamate"
+	"github.com/go-tamate/tamate"
 
 	// mysql driver
-	_ "github.com/Mitu217/tamate-mysql"
 	_ "github.com/go-sql-driver/mysql"
+	_ "github.com/go-tamate/tamate-mysql"
 )
 
 const (
