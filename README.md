@@ -12,7 +12,6 @@ A MySQL-Driver for [go-tamate/tamate](https://godoc.org/github.com/go-tamate/tam
 
   * [Features](#features)
   * [Requirements](#requirements)
-  * [Support Drivers](#support-drivers)
   * [Installation](#installation)
   * [Usage](#usage)
     * [DSN](#dsn-data-source-name)
