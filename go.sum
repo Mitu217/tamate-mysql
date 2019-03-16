@@ -1,11 +1,11 @@
-github.com/go-tamate/tamate v0.2.1 h1:s519F2aaHWoNL8k4GnQn/rV6g3b5PV5DvzvhzchynqA=
-github.com/go-tamate/tamate v0.2.1/go.mod h1:TqjHfznaVQUi7FgFM69THBFNQo8W2B9xJL0Bk7hfZU0=
 github.com/araddon/dateparse v0.0.0-20190223010137-262228af701e h1:OnnRK2k3we438w+EZ8uDq+lIkjJ7QuPOnkNlyYkiBnU=
 github.com/araddon/dateparse v0.0.0-20190223010137-262228af701e/go.mod h1:SLqhdZcd+dF3TEVL2RMoob5bBP5R1P1qkox+HtCBgGI=
 github.com/davecgh/go-spew v1.1.0 h1:ZDRjVQ15GmhC3fiQ8ni8+OwkZQO4DARzQgrnXU1Liz8=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/go-sql-driver/mysql v1.4.1 h1:g24URVg0OFbNUTx9qqY1IRZ9D9z3iPyi5zKhQZpNwpA=
 github.com/go-sql-driver/mysql v1.4.1/go.mod h1:zAC/RDZ24gD3HViQzih4MyKcchzm+sOG5ZlKdlhCg5w=
+github.com/go-tamate/tamate v0.3.0 h1:BrREyQzm1W1L71Rky5mMV7VCAhcBHMx8PEEIq+2dKLQ=
+github.com/go-tamate/tamate v0.3.0/go.mod h1:5/IUdhcyBWz+HGPcErPfXDuglos+wzYJLqSAg9+5M44=
 github.com/golang/protobuf v1.2.0/go.mod h1:6lQm79b+lXiMfvg/cZm0SGofjICqVBUtrP5yJMmIC1U=
 github.com/kr/pretty v0.1.0 h1:L/CwN0zerZDmRFUapSPitk6f+Q3+0za1rQkzVuMiMFI=
 github.com/kr/pretty v0.1.0/go.mod h1:dAy3ld7l9f0ibDNOQOHHMYYIIbhfbHSm3C4ZsoJORNo=
