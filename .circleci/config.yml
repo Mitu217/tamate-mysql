@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    working_directory: /go/src/github.com/go-tamate/tamate
+    working_directory: /go/src/github.com/go-tamate/tamate-mysql
     docker:
       - image: circleci/golang:1.12
         environment:
